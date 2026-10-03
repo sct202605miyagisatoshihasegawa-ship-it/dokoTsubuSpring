@@ -1,0 +1,19 @@
+name: dokotsubu-codex
+
+services:
+  codex:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.codex
+      args:
+        CODEX_VERSION: "0.160.0"
+    working_dir: /workspace/dokoTsubuSpring
+    volumes:
+      - .:/workspace/dokoTsubuSpring
+      - codex-home:/home/developer/.codex
+    stdin_open: true
+    tty: true
+
+volumes:
+  codex-home:
